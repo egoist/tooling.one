@@ -8,6 +8,8 @@ const nextConfig =  {
     dest: 'public',
     runtimeCaching,
     disable: prod ? false : true,
+    register: false,
+    skipWaiting: false
   },
   webpack(config, { dev, isServer }) {
     // Replace React with Preact in client production build
