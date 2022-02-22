@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <link
           rel="apple-touch-icon"
@@ -101,6 +101,8 @@ export default function Document() {
           name="msapplication-TileImage"
           content="/assets/mstile-144x144.png"
         />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <body>
         <Main />
