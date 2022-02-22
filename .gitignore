@@ -4,3 +4,6 @@ node_modules
 .next
 public/vendor
 generated/
+
+public/sw.js
+public/workbox*.js
