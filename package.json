@@ -29,6 +29,7 @@
     "qrcode": "^1.4.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hot-toast": "^2.2.0",
     "title": "^3.4.4",
     "turndown": "^7.1.1",
     "turndown-plugin-gfm": "^1.0.2"
@@ -45,6 +46,7 @@
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/turndown": "^5.0.1",
+    "@types/workbox-window": "^4.3.4",
     "autoprefixer": "^10.4.0",
     "fs-extra": "^10.0.0",
     "monaco-editor": "^0.32.1",
