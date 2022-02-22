@@ -12,7 +12,11 @@ export default function HomePage() {
           href="https://github.com/sponsors/egoist"
           className="mb-5 border-2 border-pink-400 text-pink-500 font-bold flex items-center justify-center p-5 rounded-lg text-xl space-x-2 hover:bg-pink-50"
         >
-          <img src="/github-sponsors-logo.svg" className="w-1- h-10" />
+            <img
+            alt="github sponsors logo"
+            src="/github-sponsors-logo.svg"
+            className="w-1- h-10"
+          />
           <span>Sponsor this project on GitHub.</span>
         </a>
         <div className="bg-cyan-100 text-cyan-700 font-bold p-5 rounded-lg space-y-3">
