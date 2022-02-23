@@ -52,6 +52,7 @@ export default function TextDiffPage() {
     language: string,
     type: "original" | "modified"
   ) => {
+    const monaco = getMonaco()
     return monaco.editor.createModel(
       value,
       language,
