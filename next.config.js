@@ -10,6 +10,7 @@ const nextConfig = {
     disable: !process.env.ENABLE_PWA && !prod,
     register: false,
     skipWaiting: false,
+    publicExcludes: ["!noprecache/**/*", "!vendor/**/*"],
   },
   webpack(config, { dev, isServer }) {
     // Replace React with Preact in client production build
