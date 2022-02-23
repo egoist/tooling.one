@@ -1,15 +1,15 @@
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
-const prod = process.env.NODE_ENV === 'production'
+const withPWA = require("next-pwa")
+const runtimeCaching = require("next-pwa/cache")
+const prod = process.env.NODE_ENV === "production"
 
 /** @type {import('next').NextConfig} */
-const nextConfig =  {
+const nextConfig = {
   pwa: {
-    dest: 'public',
+    dest: "public",
     runtimeCaching,
-    disable: prod ? false : true,
+    disable: !process.env.ENABLE_PWA && !prod,
     register: false,
-    skipWaiting: false
+    skipWaiting: false,
   },
   webpack(config, { dev, isServer }) {
     // Replace React with Preact in client production build
@@ -29,6 +29,5 @@ const nextConfig =  {
     return config
   },
 }
-
 
 module.exports = withPWA(nextConfig)

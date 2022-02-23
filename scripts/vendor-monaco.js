@@ -4,9 +4,12 @@ const monacoPkg = JSON.parse(
   fs.readFileSync("node_modules/monaco-editor/package.json")
 )
 
+const monacoVendorDir = `public/vendor/monaco-editor-${monacoPkg.version}`
+
+fs.copySync("node_modules/monaco-editor/min", `${monacoVendorDir}/min`)
 fs.copySync(
-  "node_modules/monaco-editor/",
-  `public/vendor/monaco-editor-${monacoPkg.version}`
+  "node_modules/monaco-editor/min-maps",
+  `${monacoVendorDir}/min-maps`
 )
 
 const languages = fs.readdirSync(
