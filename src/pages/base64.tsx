@@ -21,7 +21,7 @@ export default function Base64Page() {
     setDecoded(value)
     clearErrors()
     try {
-      const result = window.btoa(value)
+      const result = btoa(unescape(encodeURIComponent(value)))
       setEncoded(result)
     } catch (err) {
       console.error(err)
@@ -34,7 +34,7 @@ export default function Base64Page() {
     setEncoded(value)
     clearErrors()
     try {
-      const result = window.atob(value)
+      const result = decodeURIComponent(escape(atob(value)))
       setDecoded(result)
     } catch (err) {
       console.error(err)
