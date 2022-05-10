@@ -3,6 +3,7 @@ import {
   camelCase,
   pascalCase,
   pathCase,
+  kebabCase,
   snakeCase,
   constantCase,
 } from "case-anything"
@@ -32,6 +33,11 @@ export default function TextCasePage() {
       name: "Snake Case",
       value: "",
       convert: (value) => snakeCase(value),
+    },
+    {
+      name: "Kebab Case",
+        value: "",
+        convert: (value) => kebabCase(value),
     },
     {
       name: "Title Case",
