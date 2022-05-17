@@ -11,6 +11,7 @@ export default function ColorConvertPage() {
   const [hex, setHex] = React.useState("#000000");
   const [rgb, setRgb] = React.useState("");
   const [hsl, setHsl] = React.useState("");
+  const [cmyk, setCmyk] = React.useState("");
   const [keyword, setKeyword] = React.useState("");
   const [picker, setPicker] = React.useState(hex);
 
@@ -26,6 +27,10 @@ export default function ColorConvertPage() {
     const [r, g, b] = rgb;
     return `rgb(${r}, ${g}, ${b})`;
   };
+  const formatCmyk = (cmyk: number[]) => {
+    const [c, m, y, k] = cmyk;
+    return `cmyk(${c}%, ${m}%, ${y}%, ${k}%)`;
+  };
   const formatHex = (hex: string) => {
     return `#${hex.replace("#", "")}`;
   };
@@ -34,7 +39,7 @@ export default function ColorConvertPage() {
     return result.slice(0, length).map((x) => parseFloat(x));
   };
 
-  type InputSourceType = "hex" | "rgb" | "hsl" | "keyword" | "picker";
+  type InputSourceType = "hex" | "rgb" | "hsl" | "cmyk" | "keyword" | "picker";
 
   const update = (hex: string, skip: InputSourceType) => {
     setError("");
@@ -49,6 +54,10 @@ export default function ColorConvertPage() {
 
       if (skip !== "rgb") {
         setRgb(formatRgb(convert.hex.rgb(hex)));
+      }
+
+      if (skip !== "cmyk") {
+        setCmyk(formatCmyk(convert.hex.cmyk(hex)));
       }
 
       if (skip !== "hsl") {
@@ -76,6 +85,11 @@ export default function ColorConvertPage() {
     setHsl(value);
     const hex = convert.hsl.hex(parseNumArray(value, 3));
     update(hex, "hsl");
+  };
+  const handleCmykChange = (value: string) => {
+    setCmyk(value);
+    const hex = convert.cmyk.hex(parseNumArray(value, 4));
+    update(hex, "cmyk");
   };
   const handleKeywordChange = (value: string) => {
     setKeyword(value);
@@ -140,6 +154,17 @@ export default function ColorConvertPage() {
                 rows={1}
                 value={hsl}
                 onChange={handleHslChange}
+                spellCheck={false}
+              >
+              </Textarea>
+            </div>
+            <div>
+              <div className="mb-2">CMYK:</div>
+              <Textarea
+                fullWidth
+                rows={1}
+                value={cmyk}
+                onChange={handleCmykChange}
                 spellCheck={false}
               >
               </Textarea>
