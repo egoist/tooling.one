@@ -16,6 +16,7 @@ specifiers:
   autoprefixer: ^10.4.0
   case-anything: ^2.1.10
   clsx: ^1.1.1
+  color-convert: ^2.0.1
   crypto-js: ^4.1.1
   formik: ^2.2.9
   fs-extra: ^10.0.0
@@ -42,6 +43,7 @@ specifiers:
 dependencies:
   case-anything: 2.1.10
   clsx: 1.1.1
+  color-convert: 2.0.1
   crypto-js: 4.1.1
   formik: 2.2.9_react@17.0.2
   json_typegen_wasm: 0.7.0

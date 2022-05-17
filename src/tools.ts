@@ -47,4 +47,8 @@ export const tools = [
     name: "Text Difference",
     link: "/text-diff",
   },
+  {
+    name: "Color Conversion",
+    link: "/color",
+  },
 ].sort((a, b) => (a.name > b.name ? 1 : -1))
