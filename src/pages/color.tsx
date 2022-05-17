@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 import convert from "color-convert";
 import { Layout } from "../components/Layout";
 import { ErrorMessage } from "../components/ErrorMessage";
@@ -8,10 +8,11 @@ import { Textarea } from "~/components/Textarea";
 
 export default function ColorConvertPage() {
   const [error, setError] = React.useState("");
-  const [hex, setHex] = React.useState("");
-  const [rgb, setRgb] = React.useState("");
-  const [hsl, setHsl] = React.useState("");
-  const [keyword, setKeyword] = React.useState("");
+  const [hex, setHex] = React.useState("#000000");
+  const [rgb, setRgb] = React.useState("rgb(0, 0, 0)");
+  const [hsl, setHsl] = React.useState("hsl(0, 0%, 0%)");
+  const [keyword, setKeyword] = React.useState("black");
+  const [picker, setPicker] = React.useState("#000000");
 
   const formatHsl = (hsl: number[]) => {
     const [h, s, l] = hsl;
@@ -24,8 +25,8 @@ export default function ColorConvertPage() {
   const formatHex = (hex: string) => {
     return `#${hex}`;
   };
-  const parseNumArray = (hsl: string, length: number) => {
-    const result = hsl.replace(/[^0-9,.]/g, "").split(",");
+  const parseNumArray = (input: string, length: number) => {
+    const result = input.replace(/[^0-9,.]/g, "").split(",");
     return result.slice(0, length).map((x) => parseFloat(x));
   };
 
@@ -33,6 +34,7 @@ export default function ColorConvertPage() {
     setError("");
     try {
       setHex(value);
+      setPicker(value);
       setRgb(formatRgb(convert.hex.rgb(value)));
       setHsl(formatHsl(convert.hex.hsl(value)));
       setKeyword(convert.hex.keyword(value));
@@ -45,6 +47,7 @@ export default function ColorConvertPage() {
     try {
       const rgbAry = parseNumArray(value, 3);
       setHex(formatHex(convert.rgb.hex(rgbAry)));
+      setPicker(formatHex(convert.rgb.hex(rgbAry)));
       setRgb(value);
       setHsl(formatHsl(convert.rgb.hsl(rgbAry)));
       setKeyword(convert.rgb.keyword(rgbAry));
@@ -59,6 +62,7 @@ export default function ColorConvertPage() {
       setHsl(value);
       setRgb(formatRgb(convert.hsl.rgb(hslAry)));
       setHex(formatHex(convert.hsl.hex(hslAry)));
+      setPicker(formatHex(convert.hsl.hex(hslAry)));
       setKeyword(convert.hsl.keyword(hslAry));
     } catch (e) {
       setError(e.message);
@@ -76,11 +80,18 @@ export default function ColorConvertPage() {
         return;
       }
       setHex(formatHex(convert.rgb.hex(k2rgb)));
+      setPicker(formatHex(convert.rgb.hex(k2rgb)));
       setRgb(formatRgb(k2rgb));
       setHsl(formatHsl(convert.rgb.hsl(k2rgb)));
     } catch (e) {
       setError(e.message);
     }
+  };
+  const handleColorPicker: ChangeEventHandler<HTMLInputElement> = (ev) => {
+    setError("");
+    setPicker(ev.currentTarget.value);
+    setHex(ev.currentTarget.value);
+    handleHexChange(ev.currentTarget.value);
   };
 
   return (
@@ -92,7 +103,7 @@ export default function ColorConvertPage() {
         >
           <ErrorMessage className="mb-2" message={error} />
           <Textarea
-            rows={10}
+            rows={5}
             id="input-el"
             className="w-full input"
             value={hex}
@@ -100,8 +111,10 @@ export default function ColorConvertPage() {
             spellCheck={false}
           >
           </Textarea>
+
+          <input type="color" value={picker} onChange={handleColorPicker} />
         </Column>
-        <Column title="Color">
+        <Column title="Result">
           {error && (
             <div className="px-5 py-3 text-white bg-red-500 rounded-lg mb-3">
               {error}
