@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from "react";
+import React, { ChangeEventHandler, useEffect } from "react";
 import convert from "color-convert";
 import { Layout } from "../components/Layout";
 import { ErrorMessage } from "../components/ErrorMessage";
@@ -9,10 +9,14 @@ import { Textarea } from "~/components/Textarea";
 export default function ColorConvertPage() {
   const [error, setError] = React.useState("");
   const [hex, setHex] = React.useState("#000000");
-  const [rgb, setRgb] = React.useState("rgb(0, 0, 0)");
-  const [hsl, setHsl] = React.useState("hsl(0, 0%, 0%)");
-  const [keyword, setKeyword] = React.useState("black");
-  const [picker, setPicker] = React.useState("#000000");
+  const [rgb, setRgb] = React.useState("");
+  const [hsl, setHsl] = React.useState("");
+  const [keyword, setKeyword] = React.useState("");
+  const [picker, setPicker] = React.useState(hex);
+
+  useEffect(() => {
+    update(hex, "hex");
+  }, []);
 
   const formatHsl = (hsl: number[]) => {
     const [h, s, l] = hsl;
@@ -23,7 +27,7 @@ export default function ColorConvertPage() {
     return `rgb(${r}, ${g}, ${b})`;
   };
   const formatHex = (hex: string) => {
-    return `#${hex}`;
+    return `#${hex.replace("#", "")}`;
   };
   const parseNumArray = (input: string, length: number) => {
     const result = input.replace(/[^0-9,.]/g, "").split(",");
