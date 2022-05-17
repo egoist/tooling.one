@@ -30,68 +30,65 @@ export default function ColorConvertPage() {
     return result.slice(0, length).map((x) => parseFloat(x));
   };
 
-  const handleHexChange = (value: string) => {
+  type InputSourceType = "hex" | "rgb" | "hsl" | "keyword" | "picker";
+
+  const update = (hex: string, skip: InputSourceType) => {
     setError("");
     try {
-      setHex(value);
-      setPicker(value);
-      setRgb(formatRgb(convert.hex.rgb(value)));
-      setHsl(formatHsl(convert.hex.hsl(value)));
-      setKeyword(convert.hex.keyword(value));
+      if (skip !== "hex") {
+        setHex(formatHex(hex));
+      }
+
+      if (skip !== "picker") {
+        setPicker(formatHex(hex));
+      }
+
+      if (skip !== "rgb") {
+        setRgb(formatRgb(convert.hex.rgb(hex)));
+      }
+
+      if (skip !== "hsl") {
+        setHsl(formatHsl(convert.hex.hsl(hex)));
+      }
+
+      if (skip !== "keyword") {
+        setKeyword(convert.hex.keyword(hex));
+      }
     } catch (e) {
       setError(e.message);
     }
+  };
+
+  const handleHexChange = (value: string) => {
+    setHex(value);
+    update(value, "hex");
   };
   const handleRgbChange = (value: string) => {
-    setError("");
-    try {
-      const rgbAry = parseNumArray(value, 3);
-      setHex(formatHex(convert.rgb.hex(rgbAry)));
-      setPicker(formatHex(convert.rgb.hex(rgbAry)));
-      setRgb(value);
-      setHsl(formatHsl(convert.rgb.hsl(rgbAry)));
-      setKeyword(convert.rgb.keyword(rgbAry));
-    } catch (e) {
-      setError(e.message);
-    }
+    setRgb(value);
+    const hex = convert.rgb.hex(parseNumArray(value, 3));
+    update(hex, "rgb");
   };
   const handleHslChange = (value: string) => {
-    setError("");
-    try {
-      const hslAry = parseNumArray(value, 3);
-      setHsl(value);
-      setRgb(formatRgb(convert.hsl.rgb(hslAry)));
-      setHex(formatHex(convert.hsl.hex(hslAry)));
-      setPicker(formatHex(convert.hsl.hex(hslAry)));
-      setKeyword(convert.hsl.keyword(hslAry));
-    } catch (e) {
-      setError(e.message);
-    }
+    setHsl(value);
+    const hex = convert.hsl.hex(parseNumArray(value, 3));
+    update(hex, "hsl");
   };
   const handleKeywordChange = (value: string) => {
-    setError("");
-    try {
-      setKeyword(value);
-      // color-convert only supports keyword -> rgb
-
-      const k2rgb = convert.keyword.rgb(value);
-      if (k2rgb === undefined) {
-        // setError("Not in CSS Color Keywords : " + value)
-        return;
-      }
-      setHex(formatHex(convert.rgb.hex(k2rgb)));
-      setPicker(formatHex(convert.rgb.hex(k2rgb)));
-      setRgb(formatRgb(k2rgb));
-      setHsl(formatHsl(convert.rgb.hsl(k2rgb)));
-    } catch (e) {
-      setError(e.message);
+    setKeyword(value);
+    // color-convert only supports keyword -> rgb
+    const k2rgb = convert.keyword.rgb(value);
+    if (k2rgb === undefined) {
+      // setError("Not in CSS Color Keywords : " + value)
+      return;
     }
+    const k2hex = convert.rgb.hex(k2rgb);
+    update(k2hex, "keyword");
   };
+
   const handleColorPicker: ChangeEventHandler<HTMLInputElement> = (ev) => {
-    setError("");
     setPicker(ev.currentTarget.value);
-    setHex(ev.currentTarget.value);
-    handleHexChange(ev.currentTarget.value);
+    const hex = ev.target.value.replace("#", "");
+    update(hex, "picker");
   };
 
   return (
