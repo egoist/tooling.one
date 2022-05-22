@@ -31,6 +31,7 @@ specifiers:
   preact: ^10.5.14
   prettier: ^2.3.2
   qrcode: ^1.4.4
+  qrcode-parser: ^2.0.2
   react: ^17.0.2
   react-dom: ^17.0.2
   tailwindcss: ^3.0.8
@@ -55,6 +56,7 @@ dependencies:
   preact: 10.6.4
   prettier: 2.5.1
   qrcode: 1.5.0
+  qrcode-parser: 2.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   title: 3.4.4
@@ -2703,6 +2705,10 @@ packages:
       semver: 5.7.1
     dev: false
 
+  /jsqr/1.4.0:
+    resolution: {integrity: sha512-dxLob7q65Xg2DvstYkRpkYtmKm2sPJ9oFhrhmudT1dZvNFFTlroai3AWSpLey/w5vMcLBXRgOJsbXpdN9HzU/A==}
+    dev: false
+
   /jwa/1.4.1:
     resolution: {integrity: sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==}
     dependencies:
@@ -3025,6 +3031,10 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /pako/1.0.11:
+    resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
+    dev: false
+
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -3182,6 +3192,13 @@ packages:
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
+    dev: false
+
+  /qrcode-parser/2.0.2:
+    resolution: {integrity: sha512-G9YPeMnnRAvqnmERfyb7hShzzIesLFouQOI/imeRdT1Blccf8Ig0idpGaEYXLT+jLEjmLP29G77llq1NbPRXKw==}
+    dependencies:
+      jsqr: 1.4.0
+      upng-js: 2.1.0
     dev: false
 
   /qrcode/1.5.0:
@@ -3820,6 +3837,12 @@ packages:
   /upath/1.2.0:
     resolution: {integrity: sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==}
     engines: {node: '>=4'}
+    dev: false
+
+  /upng-js/2.1.0:
+    resolution: {integrity: sha512-d3xzZzpMP64YkjP5pr8gNyvBt7dLk/uGI67EctzDuVp4lCZyVMo0aJO6l/VDlgbInJYDY6cnClLoBp29eKWI6g==}
+    dependencies:
+      pako: 1.0.11
     dev: false
 
   /uri-js/4.4.1:

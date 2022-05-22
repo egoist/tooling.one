@@ -20,6 +20,10 @@ export const tools = [
     link: "/qrcode-generator",
   },
   {
+    name: "QR Code Parser",
+    link: "/qrcode-parser",
+  },
+  {
     name: "HTML to Markdown",
     link: "/html-to-markdown",
   },
