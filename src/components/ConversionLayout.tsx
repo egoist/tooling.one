@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { CopyButton } from "./Button"
 import { CodeBlock } from "./CodeBlock"
+import { Input } from "./Input"
 import { Layout } from "./Layout"
-import { Textarea } from "./Textarea"
 import { Column, TwoColumns } from "./TwoColumns"
 
 export const ConversionLayout: React.FC<{
@@ -31,7 +31,7 @@ export const ConversionLayout: React.FC<{
     <Layout>
       <TwoColumns>
         <Column title={inputTitle}>
-          <Textarea value={input} fullWidth onChange={setInput} />
+          <Input rows={10} value={input} onChange={setInput} />
         </Column>
         <Column
           title={resultTitle}

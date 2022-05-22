@@ -9,9 +9,9 @@ import {
 } from "case-anything"
 import titleCase from "title"
 import { Layout } from "../components/Layout"
-import { Textarea } from "../components/Textarea"
 import { Column, TwoColumns } from "../components/TwoColumns"
 import { CopyButton } from "../components/Button"
+import { Input } from "~/components/Input"
 
 export default function TextCasePage() {
   const [input, setInput] = useState("")
@@ -36,8 +36,8 @@ export default function TextCasePage() {
     },
     {
       name: "Kebab Case",
-        value: "",
-        convert: (value) => kebabCase(value),
+      value: "",
+      convert: (value) => kebabCase(value),
     },
     {
       name: "Title Case",
@@ -71,7 +71,7 @@ export default function TextCasePage() {
     <Layout>
       <TwoColumns>
         <Column title="Input">
-          <Textarea value={input} fullWidth onChange={setInput} />
+          <Input rows={10} value={input} onChange={setInput} />
         </Column>
         <Column title="Result">
           {input && (

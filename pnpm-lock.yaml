@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@types/crypto-js': ^4.1.1
@@ -50,7 +50,7 @@ dependencies:
   jsonwebtoken: 8.5.1
   jws: 4.0.0
   mitt: 3.0.0
-  next: 12.1.0_react-dom@17.0.2+react@17.0.2
+  next: 12.1.0_sfoxds7t5ydpegc3knd667wn6m
   next-pwa: 5.4.4_next@12.1.0
   preact: 10.6.4
   prettier: 2.5.1
@@ -78,7 +78,7 @@ devDependencies:
   fs-extra: 10.0.0
   monaco-editor: 0.32.1
   postcss: 8.4.5
-  tailwindcss: 3.0.8_16a290f6d0e3717bf6d2667234aebd30
+  tailwindcss: 3.0.8_c2rjb5wq4nyxx5wsmzzdjlv5ga
   tailwindcss-animate: 1.0.5_tailwindcss@3.0.8
   typescript: 4.5.4
 
@@ -410,6 +410,8 @@ packages:
     resolution: {integrity: sha512-7yJPvPV+ESz2IUTPbOL+YkIGyCqOyNIzdguKQuJGnH7bg1WTIifuM21YqokFt/THWh1AkCRn9IgoykTRCBVpzA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.0
     dev: false
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.16.7_@babel+core@7.17.5:
@@ -1383,7 +1385,7 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@rollup/plugin-babel/5.3.0_@babel+core@7.17.5+rollup@2.67.3:
+  /@rollup/plugin-babel/5.3.0_itfpcyhctddhhxu2hrnmbxavve:
     resolution: {integrity: sha512-9uIC8HZOnVLrLHxayq/PTzw+uS25E14KPUBh5ktF+18Mjo5yK0ToMMx6epY0uEgkjwJw0aBW4x2horYXh8juWw==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
@@ -1566,6 +1568,12 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
+
+  /acorn/8.7.1:
+    resolution: {integrity: sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+    dev: false
 
   /ajv-keywords/3.5.2_ajv@6.12.6:
     resolution: {integrity: sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==}
@@ -2878,7 +2886,7 @@ packages:
       babel-loader: 8.2.3
       clean-webpack-plugin: 4.0.0
       globby: 11.1.0
-      next: 12.1.0_react-dom@17.0.2+react@17.0.2
+      next: 12.1.0_sfoxds7t5ydpegc3knd667wn6m
       terser-webpack-plugin: 5.3.1
       workbox-webpack-plugin: 6.4.2
       workbox-window: 6.4.2
@@ -2886,14 +2894,13 @@ packages:
       - '@babel/core'
       - '@swc/core'
       - '@types/babel__core'
-      - acorn
       - esbuild
       - supports-color
       - uglify-js
       - webpack
     dev: false
 
-  /next/12.1.0_react-dom@17.0.2+react@17.0.2:
+  /next/12.1.0_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q==}
     engines: {node: '>=12.22.0'}
     hasBin: true
@@ -3346,8 +3353,6 @@ packages:
       rollup: 2.67.3
       serialize-javascript: 4.0.0
       terser: 5.10.0
-    transitivePeerDependencies:
-      - acorn
     dev: false
 
   /rollup/2.67.3:
@@ -3611,10 +3616,10 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
-      tailwindcss: 3.0.8_16a290f6d0e3717bf6d2667234aebd30
+      tailwindcss: 3.0.8_c2rjb5wq4nyxx5wsmzzdjlv5ga
     dev: true
 
-  /tailwindcss/3.0.8_16a290f6d0e3717bf6d2667234aebd30:
+  /tailwindcss/3.0.8_c2rjb5wq4nyxx5wsmzzdjlv5ga:
     resolution: {integrity: sha512-Yww1eRYO1AxITJmW/KduZPxNvYdHuedeKwPju9Oakp7MdiixRi5xkpLhirsc81QCxHL0eoce6qKmxXwYGt4Cjw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -3685,20 +3690,17 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.10.0
-    transitivePeerDependencies:
-      - acorn
     dev: false
 
   /terser/5.10.0:
     resolution: {integrity: sha512-AMmF99DMfEDiRJfxfY5jj5wNH/bYO09cniSqhfoyxc8sFoYIgkJy86G04UoZU5VjlpnplVu0K6Tx6E9b5+DlHA==}
     engines: {node: '>=10'}
     hasBin: true
-    peerDependencies:
-      acorn: ^8.5.0
     peerDependenciesMeta:
       acorn:
         optional: true
     dependencies:
+      acorn: 8.7.1
       commander: 2.20.3
       source-map: 0.7.3
       source-map-support: 0.5.21
@@ -3900,7 +3902,7 @@ packages:
       '@babel/core': 7.17.5
       '@babel/preset-env': 7.16.11_@babel+core@7.17.5
       '@babel/runtime': 7.17.2
-      '@rollup/plugin-babel': 5.3.0_@babel+core@7.17.5+rollup@2.67.3
+      '@rollup/plugin-babel': 5.3.0_itfpcyhctddhhxu2hrnmbxavve
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.67.3
       '@rollup/plugin-replace': 2.4.2_rollup@2.67.3
       '@surma/rollup-plugin-off-main-thread': 2.2.3
@@ -3936,7 +3938,6 @@ packages:
       workbox-window: 6.4.2
     transitivePeerDependencies:
       - '@types/babel__core'
-      - acorn
       - supports-color
     dev: false
 
@@ -4034,7 +4035,6 @@ packages:
       workbox-build: 6.4.2
     transitivePeerDependencies:
       - '@types/babel__core'
-      - acorn
       - supports-color
     dev: false
 

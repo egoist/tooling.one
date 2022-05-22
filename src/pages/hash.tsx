@@ -4,9 +4,9 @@ import sha256 from "crypto-js/sha256"
 import sha512 from "crypto-js/sha512"
 import sha1 from "crypto-js/sha1"
 import { Layout } from "../components/Layout"
-import { Textarea } from "../components/Textarea"
 import { Column, TwoColumns } from "../components/TwoColumns"
 import { CopyButton } from "../components/Button"
+import { Input } from "~/components/Input"
 
 type HASH_TYPE = "MD5" | "SHA256" | "SHA512" | "SHA1"
 
@@ -64,10 +64,10 @@ export default function HashPage() {
     <Layout>
       <TwoColumns>
         <Column title="Input">
-          <Textarea
+          <Input
             id="input"
+            rows={10}
             value={input}
-            fullWidth
             onChange={(value) => setInput(value)}
           />
         </Column>

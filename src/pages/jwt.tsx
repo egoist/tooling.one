@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { decode } from "jws"
 import { Layout } from "../components/Layout"
 import { Column, TwoColumns } from "~/components/TwoColumns"
-import { Textarea } from "~/components/Textarea"
+import { Input } from "~/components/Input"
 
 const stringify = (data: any) => JSON.stringify(data, null, 2)
 
@@ -96,13 +96,7 @@ export default function JwtPage() {
               {decodeError}
             </div>
           )}
-          <div>
-            <Textarea
-              fullWidth
-              value={input}
-              onChange={handleInputChange}
-            ></Textarea>
-          </div>
+          <Input value={input} rows={10} onChange={handleInputChange}></Input>
         </Column>
         <Column title="Decoded">
           {encodeError && (
@@ -111,33 +105,27 @@ export default function JwtPage() {
             </div>
           )}
           <div className="space-y-5">
-            <div>
-              <div className="mb-2">Header:</div>
-              <Textarea
-                fullWidth
-                rows={5}
-                value={header}
-                onChange={handleHeaderChange}
-              ></Textarea>
-            </div>
-            <div>
-              <div className="mb-2">Payload:</div>
-              <Textarea
-                fullWidth
-                rows={5}
-                value={payload}
-                onChange={handlePayloadChange}
-              ></Textarea>
-            </div>
-            <div>
-              <div className="mb-2">Signature:</div>
-              <Textarea
-                fullWidth
-                rows={5}
-                value={signature}
-                onChange={handleSignatureChange}
-              ></Textarea>
-            </div>
+            <Input
+              id="header"
+              label="Header:"
+              rows={5}
+              value={header}
+              onChange={handleHeaderChange}
+            ></Input>
+            <Input
+              id="paylaod"
+              label="Payload:"
+              rows={5}
+              value={payload}
+              onChange={handlePayloadChange}
+            ></Input>
+            <Input
+              id="signature"
+              label="Signature:"
+              rows={5}
+              value={signature}
+              onChange={handleSignatureChange}
+            ></Input>
           </div>
         </Column>
       </TwoColumns>
